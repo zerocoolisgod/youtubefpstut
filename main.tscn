@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmelockali7h"]
+
+[ext_resource type="Texture2D" uid="uid://djq4cxerm20ui" path="res://d7aopi7-df760885-8389-49a9-872d-425fee355b4f.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://brv1ng8npl8cf" path="res://objects/player_controller.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cdtsda3ub0qc8" path="res://objects/box.tscn" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_texture = ExtResource("1_ig7tw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
+material = SubResource("StandardMaterial3D_0xm2m")
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+size = Vector3(10, 0.5, 10)
+
+[node name="prototype_level" type="Node3D"]
+
+[node name="geometry" type="Node3D" parent="."]
+
+[node name="floor" type="StaticBody3D" parent="geometry"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="geometry/floor"]
+mesh = SubResource("BoxMesh_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="geometry/floor"]
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.742093, 0.670297, 0, -0.670297, 0.742093, 0, 6.97017, 10.3973)
+shadow_enabled = true
+
+[node name="cBox" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14617, 0)
+
+[node name="playerController" parent="." instance=ExtResource("3_1bvp3")]
+transform = Transform3D(-0.0583481, 0, 0.998296, 0, 1, 0, -0.998296, 0, -0.0583481, 3.87609, 1.52637, 0)

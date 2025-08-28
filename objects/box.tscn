@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdtsda3ub0qc8"]
+
+[ext_resource type="Texture2D" uid="uid://b4iy4rhsssg5c" path="res://clean_479.jpg" id="1_et42k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bctmu"]
+albedo_texture = ExtResource("1_et42k")
+
+[sub_resource type="BoxMesh" id="BoxMesh_d7q48"]
+material = SubResource("StandardMaterial3D_bctmu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10rvk"]
+
+[node name="cBox" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_d7q48")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_10rvk")

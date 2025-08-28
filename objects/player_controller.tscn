@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://brv1ng8npl8cf"]
+
+[ext_resource type="Script" uid="uid://dx8ywxomrxut0" path="res://scripts/mouse_capture.gd" id="1_8nxyx"]
+[ext_resource type="Script" uid="uid://vfl3f2ebm7ya" path="res://scripts/player_controller.gd" id="1_fk6ag"]
+[ext_resource type="Script" uid="uid://d1o35r3gposlu" path="res://scripts/camera_controller.gd" id="1_mu046"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1xr6o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nxyx"]
+
+[node name="playerController" type="CharacterBody3D"]
+script = ExtResource("1_fk6ag")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_1xr6o")
+
+[node name="standingShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8nxyx")
+
+[node name="cameraController" type="Node3D" parent="." node_paths=PackedStringArray("player_controller", "component_mouse_capture")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_mu046")
+player_controller = NodePath("..")
+component_mouse_capture = NodePath("../components/mouseCapture")
+
+[node name="Camera3D" type="Camera3D" parent="cameraController"]
+fov = 64.8
+
+[node name="interactRaycast" type="RayCast3D" parent="cameraController/Camera3D"]
+
+[node name="components" type="Node" parent="."]
+
+[node name="mouseCapture" type="Node" parent="components" node_paths=PackedStringArray("camera_controller")]
+script = ExtResource("1_8nxyx")
+debug = null
+currentMouseMode = null
+mouseSensitivity = 0.001
+camera_controller = NodePath("../../cameraController")
