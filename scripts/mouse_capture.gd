@@ -2,7 +2,7 @@ class_name mouseCaptureComponent extends Node
 @export var debug: bool = false
 @export_category("Mouse Capture Settings")
 @export var currentMouseMode : Input.MouseMode = Input.MOUSE_MODE_CAPTURED
-@export var mouseSensitivity : Vector2(0.005,0.005)
+@export var mouseSensitivity : Vector2 = Vector2(0.005,0.005)
 #@export var mouseSensitivity : float = 0.005
 
 @export_category("Refrences")

@@ -32,7 +32,5 @@ fov = 64.8
 
 [node name="mouseCapture" type="Node" parent="components" node_paths=PackedStringArray("camera_controller")]
 script = ExtResource("1_8nxyx")
-debug = null
-currentMouseMode = null
-mouseSensitivity = 0.001
+mouseSensitivity = Vector2(0.002, 0.002)
 camera_controller = NodePath("../../cameraController")
