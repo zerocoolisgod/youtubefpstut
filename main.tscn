@@ -35,4 +35,4 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14617, 0)
 
 [node name="playerController" parent="." instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.0583481, 0, 0.998296, 0, 1, 0, -0.998296, 0, -0.0583481, 0.715926, 1.52637, 3.42166)
+transform = Transform3D(-0.0583481, 0, 0.998296, 0, 1, 0, -0.998296, 0, -0.0583481, -4.27282, 1.52637, 7.40567)
