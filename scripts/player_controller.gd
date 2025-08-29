@@ -2,11 +2,23 @@ class_name playerController extends CharacterBody3D
 
 var _input_dir : Vector2 = Vector2.ZERO
 var _movement_velocity : Vector3 = Vector3.ZERO
-var speed : float = 5.0
-var acceleration : float = 0.05
-var deceleration : float = 0.3
+@export_category("Movement Settings")
+@export var speed : float = 5.0
+@export var acceleration : float = 0.05
+@export var deceleration : float = 0.3
+
 
 func _physics_process(delta: float) -> void:
+	set_dir_vel(delta)
+	
+	move_and_slide()
+
+
+func update_rotation(rotation_input)-> void:
+	global_transform.basis = Basis.from_euler(rotation_input)
+
+
+func set_dir_vel(delta: float) -> void:
 	var current_velocity :Vector2
 	var direction 
 	
@@ -25,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	_movement_velocity = Vector3(current_velocity.x, velocity.y, current_velocity.y)
 	velocity = _movement_velocity
 	
-	move_and_slide()
-
-func update_rotation(rotation_input)-> void:
-	global_transform.basis = Basis.from_euler(rotation_input)
+func _input(event):
+	if event.is_action_pressed("dev_exit"):
+		get_tree().quit()
